@@ -25,7 +25,7 @@
             font-weight: normal;
             font-family: 'poppins', sans-serif;
             margin: 0;
-            white-space: normal;
+            white-space: nowrap;
             color: #545454;
             letter-spacing: 2px;
         }
@@ -37,7 +37,7 @@
         }
         .content{
             
-            white-space: normal;
+            white-space: nowrap;
             padding-right: 150px;
             padding-left: 150px;
         }
@@ -53,10 +53,9 @@
             position: absolute;
             right: 105px;
             font-weight: normal;
-            white-space: nowrap;
         }
         .page_name{
-            font-size: 63.560118258px;
+            font-size: 73.560118258px;
             padding-left: 67.58568px;
             position: relative;
             top: 45px;
@@ -67,17 +66,22 @@
         }
         .logo{
             font-size: 65.62504578px;
-            margin-top: 30px;
+            margin-top: 70px;
             color: #020c50;
+            padding-top: 70px;
+            padding-left: 20px;
+            position: relative;
+            top: 30px;
         }
         .company_info{
             margin-top: 100px;
             padding-left: 67.58568px;
             padding-right: 45.666px;
             padding-bottom: 20px;
+            font-size: 80% !important;
         }
         .company_info .info{
-            margin-left: 80px;
+            margin-left: 130px;
         }
         .invoice{
             white-space: nowrap;
@@ -386,7 +390,7 @@
 
         </div>
             <!-----------------------FOOTER------------------>
-            <div class="footer">
+        <div class="footer">
             <div class="payment inline_block">
                 <div class="payment_title" style="font-weight: bold;">
                     <div><b>PAYMENT INFO</b></div>
@@ -409,7 +413,7 @@
             </div>
             <div class="contacts inline_block">
                 <div class="phone"><i class="fa-solid fa-phone"></i>+123-456-7890</div>
-                <div class="mail"><i class="fa-regular fa-envelope"></i>shello@reallygreatsite.com</div>
+                <div class="mail"><i class="fa-regular fa-envelope"></i>hello@reallygreatsite.com</div>
                 <div class="location"><i class="fa-solid fa-house"></i>123 Anywhere St., Any City, ST 12345</div>
             </div>
             <div class="footer_key" style="position: relative;">
@@ -420,7 +424,7 @@
     </div>
 
 <!-----------------SECOND PAGE--------------------->
-    <div class="container">
+    <div class="container" style="height: 1630pt;">
         <div class="content">
             <!----------------------HEADER------------------>
             <div class="Header">
@@ -441,42 +445,41 @@
                 </div>
             </div>
 
-        <!-----------------------PAYMENT----------------->
-        <div class="payment_section inline_block">
-            <div class="payment_title" style="font-weight: bold;">
-                <div><b>PAYMENT INFO</b></div>
+            <!-----------------------PAYMENT----------------->
+            <div class="payment_section inline_block">
+                <div class="payment_title" style="font-weight: bold;">
+                    <div><b>PAYMENT INFO</b></div>
+                </div>
+                <div class="payment_method">
+                    <div>Bankgiro-number: 12345678</div>
+                    <div>Plusgiro-number: 845747383</div>
+                    <div>Swish-number: 1234562355</div>
+                </div>
+                <div class="iban">
+                    <div>IBAN-number: JO71CB JO0000 000000 001234 567890</div>
+                    <div>Swift-number: BNOR PH MMXXX</div>
+                    <div>Bank: SEB</div>
+                </div>
+                <div class="bank_transfer">
+                    <div>Account number: DE89370400440532013000</div>
+                    <div>Clearing number: DEBLZ12345678</div>
+                    <div>Bank: SEB</div>
+                </div>
             </div>
-            <div class="payment_method">
-                <div>Bankgiro-number: 12345678</div>
-                <div>Plusgiro-number: 845747383</div>
-                <div>Swish-number: 1234562355</div>
-            </div>
-            <div class="iban">
-                <div>IBAN-number: JO71CB JO0000 000000 001234 567890</div>
-                <div>Swift-number: BNOR PH MMXXX</div>
-                <div>Bank: SEB</div>
-            </div>
-            <div class="bank_transfer">
-                <div>Account number: DE89370400440532013000</div>
-                <div>Clearing number: DEBLZ12345678</div>
-                <div>Bank: SEB</div>
-            </div>
-        </div>
 
-        <!-----------------------DETAILS----------------->
-        <div class="details">
-            <div class="details_title">DETAILS</div>
-            <div class="first-p">
-                Räntor och avgifter:</br>
-                En påminnelseavgift på 60 kr samt en avgift för inkassokrav på 180 kr har påförts fakturan. Det har även påförts en dröjsmålsränta baserad på referensränta + 8% i årsränta enligt räntelagens 6 paragraf. Dröjsmålsräntan är beräknad från förfallodatum till datum för inkassokravet. Om inte betalning inkommer innan förfallodatum för detta inkassokrav kan ytterligare ränta och avgifter tillkomma.
+            <!-----------------------DETAILS----------------->
+            <div class="details">
+                <div class="details_title">DETAILS</div>
+                <div class="first-p">
+                    Räntor och avgifter:</br>
+                    En påminnelseavgift på 60 kr samt en avgift för inkassokrav på 180 kr har påförts fakturan. Det har även påförts en dröjsmålsränta baserad på referensränta + 8% i årsränta enligt räntelagens 6 paragraf. Dröjsmålsräntan är beräknad från förfallodatum till datum för inkassokravet. Om inte betalning inkommer innan förfallodatum för detta inkassokrav kan ytterligare ränta och avgifter tillkomma.
+                </div>
+                <div class="second-p">
+                    
+                    Behandling av personuppgifter:</br>
+                    Fortnox Finans är personuppgiftsbiträde för behandlingen av dina personuppgifter i syfte att utföra vårt uppdrag att hantera inkassokrav. Vi kan även komma att behandla dina personuppgifter för egna ändamål i rollen som personuppgiftsansvarig, vilket du kan läsa om i vår integritetspolicy som du hittar på fortnox.se
+                </div>
             </div>
-            <div class="second-p">
-                
-                Behandling av personuppgifter:</br>
-                Fortnox Finans är personuppgiftsbiträde för behandlingen av dina personuppgifter i syfte att utföra vårt uppdrag att hantera inkassokrav. Vi kan även komma att behandla dina personuppgifter för egna ändamål i rollen som personuppgiftsansvarig, vilket du kan läsa om i vår integritetspolicy som du hittar på fortnox.se
-            </div>
-        </div>
-
         </div>
         <!-----------------------FOOTER------------------>
         <div class="footer">
@@ -510,7 +513,6 @@
                 <div class="inline key_2">&#60;footer_key_2> &#60;footer_key_2></div>
             </div>
         </div>
-
     </div>
 
 </body>
