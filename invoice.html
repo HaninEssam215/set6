@@ -336,6 +336,7 @@
 
         <div class="content">
         <!----------------------HEADER------------------>
+        {% if LOGO or COMPANY_NAME or organisation_number or vat_number or f_skatt %}
         <div class="Header">
             <div class="logo inline">
                 {% if LOGO %}
@@ -363,6 +364,7 @@
                 {% endif %}
             </div>
         </div>
+        {% endif %}
         <!---------------------invoice------------------>
         <div class="invoice">
             <div class="invoice_to inline_block">
@@ -418,6 +420,7 @@
 
 
         <!-----------------------REMINDER TABLE---------------------------->
+        {% if product_number or product_name or qty or price or discount or vat_rate or total %}
         <div class="reminder_table table">
             <div class="titles">
                 <div class="inline_block first-col">NO.</div>
@@ -474,6 +477,7 @@
                 <div class="inline_block seventh-col">{{ total }}</div>
             </div>
         </div>
+        {% endif %}
 
         <div class="TOTAL_TEXT">
             <div class="inline_block total">
@@ -531,6 +535,10 @@
 
         </div>
         <!-----------------------FOOTER------------------>
+        {% if bankigro_number or plusgiro_number or swish_number
+             or iban_number or swift_number or bank or account_number or clearing_number or
+              company_phone or company_email or company_address
+             or footer_key_1 or footer_value_1 or footer_key_2 or footer_value_2 %}
         <div class="footer">
         <div class="payment inline_block">
             <div class="payment_title" style="font-weight: bold;">
@@ -590,6 +598,7 @@
             {% endif %}
         </div>
     </div>
+    {% endif %}
     </div>
 
 
