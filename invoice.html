@@ -385,8 +385,12 @@
                     {% if ocr_number %}
                     <div>OCR No: {{ ocr_number }}</div>
                     {% endif %}
-                    <div>Reminder number: 2857193521I</div>
-                    <div>Date: 23/06/2023</div>
+                    {% if REMINDER_NUMBER %}
+                    <div>Reminder number: {{REMINDER_NUMBER}}</div>
+                    {% endif %}
+                    {% if REMINDER_DATE %}
+                    <div>Date: {{REMINDER_DATE}}</div>
+                    {% endif %}
                     {% if due_date %}
                     <div>Due date: {{ due_date }}</div>
                     {% endif %}
