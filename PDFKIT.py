@@ -4,8 +4,8 @@ path_to_file = 'invoice.html'
 
 
 options = {
-    'page-width': '8.27in',  # Set the width to 8.27 inches
-    'page-height': '11.69in',  # Set the height to 11.69 inches
+    'page-width': '8.27in', 
+    'page-height': '11.69in', 
     'dpi': 100,
     'margin-top': '0',
     'margin-right': '0',
