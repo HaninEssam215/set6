@@ -338,7 +338,9 @@
         <!----------------------HEADER------------------>
         <div class="Header">
             <div class="logo inline">
+                {% if LOGO %}
                 <div class="inline">{{ LOGO }}</div>
+                {% endif %}
             </div>
             <div class="title inline">
                 <div class="inline page_name">INVOICE</div>
@@ -347,36 +349,64 @@
                 </div>
             </div>
             <div class="company_info">
-                <div class="inline">{{ company_name }}</div>
+                {% if COMPANY_NAME %}
+                <div class="inline">{{ COMPANY_NAME }}</div>
+                {% endif %}
+                {% if organisation_number %}
                 <div class="inline info">{{ organisation_number }}</div>
+                {% endif %}
+                {% if vat_number %}
                 <div class="inline info">{{ vat_number }}</div>
+                {% endif %}
+                {% if f_skatt %}
                 <div class="inline info">{{ f_skatt }}</div>
+                {% endif %}
             </div>
         </div>
         <!---------------------invoice------------------>
         <div class="invoice">
             <div class="invoice_to inline_block">
                 <div class="info">
+                    {% if receiver_address %}
                     <div>{{ receiver_address }}</div>
+                    {% endif %}
                     <div>Date : 21/05/2022</div>
                     <div>Number: +123-456-7890</div>
+                    {% if receiver_extra_field_key1 and receiver_extra_field_value1 %}
                     <div>{{ receiver_extra_field_key1 }}: {{ receiver_extra_field_value1 }}</div>
+                    {% endif %}
+                    {% if receiver_extra_field_key2 and receiver_extra_field_value2 %}
                     <div>{{ receiver_extra_field_key2 }}: {{ receiver_extra_field_value2 }}</div>
+                    {% endif %}
                 </div>
                 <div class="ocr">
+                    {% if ocr_number %}
                     <div>OCR No: {{ ocr_number }}</div>
+                    {% endif %}
                     <div>Reminder number: 2857193521I</div>
                     <div>Date: 23/06/2023</div>
+                    {% if due_date %}
                     <div>Due date: {{ due_date }}</div>
+                    {% endif %}
                 </div>
             </div>
             <div class="payable_to inline_block">
                 <div class="address">
+                    {% if our_reference %}
                     <div>Our reference: {{ our_reference }}</div>
+                    {% endif %}
+                    {% if your_reference %}
                     <div>Your reference: {{ your_reference }}</div>
+                    {% endif %}
+                    {% if order_number %}
                     <div>Order number: {{ order_number }}</div>
+                    {% endif %}
+                    {%if reference_field_1 %}
                     <div>Reference 1: {{ reference_field_1 }}</div>
+                    {% endif %}
+                    {% if reference_field_1 %}
                     <div>Reference 2: {{ reference_field_1 }}</div>
+                    {% endif %}
                 </div>
                 <div class="extra_field">
                     <div>&#60;extra_field_key1>: 0000</div>
@@ -447,34 +477,56 @@
 
         <div class="TOTAL_TEXT">
             <div class="inline_block total">
+                {% if total_excl_vat %}
                 <div>TOTAL EXCL. VAT :</div>
+                {% endif %}
+                {% if invoice_discount %}
                 <div>INVOICE DISCOUNT :</div>
+                {% endif %}
+                {% if vat_amount %}
                 <div>TOTAL VAT :</div>
+                {% endif %}
             </div>
             <div class="inline_block value">
+                {% if total_excl_vat %}
                 <div>${{ total_excl_vat }}</div>
+                {% endif %}
+                {% if invoice_discount %}
                 <div style="padding-left: 10px;">${{ invoice_discount }}</div>
+                {% endif %}
+                {% if vat_amount %}
                 <div style="padding-left: 10px;">${{ vat_amount }}</div>
+                {% endif %}
             </div>
         </div>
 
             
             <div class="TOTAL">
+                {% if total %}
                 <div class="inline total">TOTAL</div>
                 <div class="inline value">${{ total }}</div>
+                {% endif %}
             </div>
 
 
             <!------------------------THANKS----------------->
             <div class="thanks">
+                {% if invoice_text %}
                 <div>{{ invoice_text }}</div>
+                {% endif %}
             </div>
 
             <!------------------------TERMS----------------->
             <div class="terms">
+                {% if terms_of_payment %}
                 <div class="inline_block">Terms of payment: {{ terms_of_payment }}</div>
+                {% endif %}
+                {% if late_interest_rate %}
                 <div class="inline_block terms_p">Late interest rate: {{ late_interest_rate }}% per annum</div>
+                {% endif %}
+                {% if invoice_period %}
                 <div class="inline_block terms_p">Invoice period: {{ invoice_period }}</div>
+                {% endif %}
             </div>
 
         </div>
@@ -485,29 +537,57 @@
                 <div><b>PAYMENT INFO</b></div>
             </div>
             <div class="payment_method">
+                {% if bankigro_number %}
                 <div>Bankgiro-number: {{ bankigro_number }}</div>
+                {% endif %}
+                {% if plusgiro_number %}
                 <div>Plusgiro-number: {{ plusgiro_number }}</div>
+                {% endif %}
+                {% if swish_number %}
                 <div>Swish-number: {{ swish_number }}</div>
+                {% endif %}
             </div>
             <div class="iban">
+                {% if iban_number %}
                 <div>IBAN-number: {{ iban_number }}</div>
+                {% endif %}
+                {% if swift_number %}
                 <div>Swift-number: {{ swift_number }}</div>
+                {% endif %}
+                {% if bank %}
                 <div>Bank: {{ bank }}</div>
+                {% endif %}
             </div>
             <div class="bank_transfer">
+                {% if account_number %}
                 <div>Account number: {{ account_number }}</div>
+                {% endif %}
+                {% if clearing_number %}
                 <div>Clearing number: {{ clearing_number }}</div>
+                {% endif %}
+                {% if bank %}
                 <div>Bank: {{ bank }}</div>
+                {% endif %}
             </div>
         </div>
         <div class="contacts inline_block">
+            {% if company_phone %}
             <div class="phone"><i class="fa-solid fa-phone"></i>{{ company_phone }}</div>
+            {% endif %}
+            {% if company_email %}
             <div class="mail"><i class="fa-regular fa-envelope"></i>{{ company_email }}</div>
+            {% endif %}
+            {% if company_address %}
             <div class="location"><i class="fa-solid fa-house"></i>{{ company_address }}</div>
+            {% endif %}
         </div>
         <div class="footer_key" style="position: relative;">
+            {% if footer_key_1 and footer_value_1 %}
             <div class="inline key_1">{{ footer_key_1 }} {{ footer_value_1 }} </div>
+            {% endif %}
+            {% if footer_key_2 and footer_value_2 %}
             <div class="inline key_2">{{ footer_key_2 }} {{ footer_value_2 }}</div>
+            {% endif %}
         </div>
     </div>
     </div>
