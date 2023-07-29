@@ -288,232 +288,368 @@
 
         <div class="content">
 
-                    <!----------------------HEADER------------------>
-        <div class="Header">
-            <div class="logo inline">
-                <div class="inline">LOGO</div>
-            </div>
-            <div class="title inline">
-                <div class="inline page_name">COLLECTION</div>
-                <div class="page_no">
-                    <p>PAGE 1/2</p>
+            <!----------------------HEADER------------------>
+            {% if LOGO or HEADER or CURRENT_PAGE or NUMBER_PAGES or COMPANY_NAME or organisation_number or vat_number or f_skatt %}
+            <div class="Header">
+                <div class="logo inline">
+                    {% if LOGO %}
+                    <div class="inline">{{LOGO}}</div>
+                    {% endif %}
+                </div>
+                <div class="title inline">
+                    {% if HEADER %}
+                    <div class="inline page_name">{{HEADER}}</div>
+                    {% endif %}
+                    <div class="page_no">
+                        {% if CURRENT_PAGE and NUMBER_PAGES %}
+                        <p>PAGE {{CURRENT_PAGE}}/{{NUMBER_PAGES}}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="company_info">
+                    {% if COMPANY_NAME %}
+                    <div class="inline">{{ company_name }}</div>
+                    {% endif %}
+                    {% if organisation_number %}
+                    <div class="inline info">{{ organisation_number }}</div>
+                    {% endif %}
+                    {% if vat_number %}
+                    <div class="inline info">{{ vat_number }}</div>
+                    {% endif %}
+                    <div class="inline info">{{ f_skatt }}</div>
                 </div>
             </div>
-            <div class="company_info">
-                <div class="inline">&#60;company_name></div>
-                <div class="inline info">&#60;organisation_number></div>
-                <div class="inline info">&#60;vat_number></div>
-                <div class="inline info">Godkänd för F-skatt</div>
-            </div>
-        </div>
+            {% endif %}
             <!---------------------REMINDER------------------>
             <div class="invoice">
                 <div class="inline_block invoice_to">
                     <div class="info">
-                        <div>Address: 123 Anywhere St.,Any City, ST 12345</div>
-                        <div>Date : 21/05/2022</div>
-                        <div>Number: +123-456-7890</div>
-                        <div>&#60;receiver_extra_field1>: &#60;value1></div>
-                        <div>&#60;receiver_extra_field2>: &#60;value2></div>
+                        {% if company_address %}
+                        <div>Address: {{company_address}}</div>
+                        {% endif %}
+                        {% if REMINDER_DATE %}
+                        <div>Date: {{REMINDER_DATE}}</div>
+                        {% endif %}
+                        {% if organisation_number %}
+                        <div>Number: {{organisation_number}}</div>
+                        {% endif %}
+                        {% if receiver_extra_field_key1 and value1 %}
+                        <div>{{ receiver_extra_field_key1 }}: {{ value1 }}</div>
+                        {% endif %}
+                        {% if receiver_extra_field_key2 and value2 %}
+                        <div>{{ receiver_extra_field_key2 }}: {{ value2 }}</div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="inline_block payable_to">
                     <div class="ocr">
-                        <div>OCR No: 12345</div>
-                        <div>Reminder number: 2857193521I</div>
-                        <div>Date: 23/06/2023</div>
-                        <div>Due date: 30/06/2023</div>
+                        {% if ocr_number %}
+                        <div>OCR No: {{ ocr_number }}</div>
+                        {% endif %}
+                        {% if REMINDER_NUMBER %}
+                        <div>Reminder number: {{REMINDER_NUMBER}}</div>
+                        {% endif %}
+                        {% if REMINDER_DATE %}
+                        <div>Date: {{REMINDER_DATE}}</div>
+                        {% endif %}
+                        {% if due_date %}
+                        <div>Due date: {{ due_date }}</div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
-
             <!------------------REMINDER TEXT--------------->
             <div class="col reminder_text">
-                <div class="reminder_text_title open_sauce">Inkassokrav avseende faktura NR 5682 från COMP. INC.</div>
+                <div class="reminder_text_title open_sauce">{{INKASSO_TEXT_HEADER}}</div>
                 <div class="upper_text">
-                    Eftersom vi inte mottagit någon betalning för ovan faktura till PER JOHANSSON, trots tidigare påminnelser, kommer här ett inkassokrav på nedanstående skuld. Undvik ytterligare avgifter och räntor genom att betala enligt nedan senast 2021-10-18.
+                    {{INKASSO_TEXT1}}
                 </div>
             </div>
 
 
             <!-----------------------REMINDER TABLE---------------------------->
+            {% if invoice_number or invoice_amount or due_date or reminder_fee or interest_fee or inkasso_fee %}
             <div class="reminder_table table">
                 <div class="odd inline-block reminder_table_title">
                     <div class="">REMINDER REFERS TO</div>
                 </div>
+                {% if invoice_number %}
                 <div class="table_rows" style="padding-top: 15px;">
                     <div class="inline_block">Invoice:</div>
-                    <div class="value inline_block">$200.00</div>
+                    <div class="value inline_block">${{invoice_number}}</div>
                 </div>
+                {% endif %}
+                {% if invoice_amount %}
                 <div class="table_rows ">
                     <div class="inline_block">Invoice amount:</div>
-                    <div class="value inline_block">$100.00</div>
+                    <div class="value inline_block">${{invoice_amount}}</div>
                 </div>
+                {% endif %}
+                {% if due_date %}
                 <div class="table_rows">
                     <div class="inline_block">Due date:</div>
-                    <div class="value inline_block">$250.00</div>
+                    <div class="value inline_block">${{due_date}}</div>
                 </div>
+                {% endif %}
+                {% if reminder_fee %}
                 <div class="table_rows">
                     <div class="inline_block">Reminder fee:</div>
-                    <div class="value inline_block">$300.00</div>
+                    <div class="value inline_block">${{reminder_fee}}</div>
                 </div>
+                {% endif %}
+                {% if interest_fee %}
                 <div class="table_rows">
                     <div class="inline_block">Interest fee:</div>
-                    <div class="value inline_block">$200.00</div>
+                    <div class="value inline_block">${{interest_fee}}</div>
                 </div>
+                {% endif %}
+                {% if inkasso_fee %}
                 <div class="table_rows">
                     <div class="inline_block">Inkasso fee:</div>
-                    <div class="value inline_block">$200.00</div>
+                    <div class="value inline_block">${{inkasso_fee}}</div>
                 </div>
+                {% endif %}
             </div>
+            {% endif %}
             
+            {% if total %}
             <div class="TOTAL">
                 <div class="inline total">TOTAL</div>
-                <div class="inline value">$1155.00</div>
+                <div class="inline value">${{total}}</div>
+            </div>
+            {% endif %}
+            <!-------------------------------TABLE TEXT--------------->
+            <div class="text_table">
+                <div class="first-p">
+                    {{INKASSO_TEXT2}}
+                </div>
             </div>
 
-                        <!-------------------------------TABLE TEXT--------------->
-                        <div class="text_table">
-                            <div class="first-p">
-                                Eftersom vi inte mottagit någon betalning för ovan faktura till PER JOHANSSON, trots tidigare påminnelser, kommer här ett inkassokrav på nedanstående skuld. Undvik ytterligare avgifter och räntor genom att betala enligt nedan senast 2021-10-18.
-            
-                            </div>
-                            <div class="second-p">
-                                För detaljerad beskrivning av originalfakturan samt information om räntor och avgifter, se sista sidan.
-            Eventuella invändningar mot inkassokravet ska göras med redovisning av saklig grund samt inkassokravets OCR-nummer före 2021-10-18. Bestridandet görs med fördel via minfaktura@faktura.se.
-            Utebliven invändning eller betalning kan medföra att ärendet överlämnas till Kronofogdemyndigheten för ansökan om betalningsföreläggande, varvid utmätning kan följa. Vid eventuellt rättsligt förfarande kommer ytterligare kostnader att påföras skulden. Dröjsmålsränta löper till dess full betalning sker.
-                            </div>
-                            <div class="third-p">
-                                Med vänlig hälsning
-                            </div>
-                        </div>
-
         </div>
-            <!-----------------------FOOTER------------------>
+        <!-----------------------FOOTER------------------>
+        {% if bankigro_number or plusgiro_number or swish_number
+        or iban_number or swift_number or bank or account_number or clearing_number or
+            company_phone or company_email or company_address
+        or footer_key_1 or footer_value_1 or footer_key_2 or footer_value_2 %}
         <div class="footer">
             <div class="payment inline_block">
                 <div class="payment_title" style="font-weight: bold;">
                     <div><b>PAYMENT INFO</b></div>
                 </div>
                 <div class="payment_method">
-                    <div>Bankgiro-number: 12345678</div>
-                    <div>Plusgiro-number: 845747383</div>
-                    <div>Swish-number: 1234562355</div>
+                    {% if bankigro_number %}
+                    <div>Bankgiro-number: {{ bankigro_number }}</div>
+                    {% endif %}
+                    {% if plusgiro_number %}
+                    <div>Plusgiro-number: {{ plusgiro_number }}</div>
+                    {% endif %}
+                    {% if swish_number %}
+                    <div>Swish-number: {{ swish_number }}</div>
+                    {% endif %}
                 </div>
                 <div class="iban">
-                    <div>IBAN-number: JO71CB JO0000 000000 001234 567890</div>
-                    <div>Swift-number: BNOR PH MMXXX</div>
-                    <div>Bank: SEB</div>
+                    {% if iban_number %}
+                    <div>IBAN-number: {{ iban_number }}</div>
+                    {% endif %}
+                    {% if swift_number %}
+                    <div>Swift-number: {{ swift_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
                 <div class="bank_transfer">
-                    <div>Account number: DE89370400440532013000</div>
-                    <div>Clearing number: DEBLZ12345678</div>
-                    <div>Bank: SEB</div>
+                    {% if account_number %}
+                    <div>Account number: {{ account_number }}</div>
+                    {% endif %}
+                    {% if clearing_number %}
+                    <div>Clearing number: {{ clearing_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
             </div>
             <div class="contacts inline_block">
-                <div class="phone"><i class="fa-solid fa-phone"></i>+123-456-7890</div>
-                <div class="mail"><i class="fa-regular fa-envelope"></i>hello@reallygreatsite.com</div>
-                <div class="location"><i class="fa-solid fa-house"></i>123 Anywhere St., Any City, ST 12345</div>
+                {% if company_phone %}
+                <div class="phone"><i class="fa-solid fa-phone"></i>{{ company_phone }}</div>
+                {% endif %}
+                {% if company_email %}
+                <div class="mail"><i class="fa-regular fa-envelope"></i>{{ company_email }}</div>
+                {% endif %}
+                {% if company_address %}
+                <div class="location"><i class="fa-solid fa-house"></i>{{ company_address }}</div>
+                {% endif %}
             </div>
             <div class="footer_key" style="position: relative;">
-                <div class="inline key_1">&#60;footer_key_1> &#60;footer_key_1> </div>
-                <div class="inline key_2">&#60;footer_key_2> &#60;footer_key_2></div>
+                {% if footer_key_1 and footer_value_1 %}
+                <div class="inline key_1">{{ footer_key_1 }} {{ footer_value_1 }} </div>
+                {% endif %}
+                {% if footer_key_2 and footer_value_2 %}
+                <div class="inline key_2">{{ footer_key_2 }} {{ footer_value_2 }}</div>
+                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
 
 <!-----------------SECOND PAGE--------------------->
+{% if bankigro_number or plusgiro_number or swish_number or 
+    iban_number or swift_number or account_number or 
+    clearing_number or bank 
+    or INKASSO_DETAILS_HEADER or INKASSO_DETAILS_TEXT %}
     <div class="container" style="height: 1630pt;">
         <div class="content">
             <!----------------------HEADER------------------>
+            {% if LOGO or HEADER or CURRENT_PAGE or NUMBER_PAGES or COMPANY_NAME or organisation_number or vat_number or f_skatt %}
             <div class="Header">
                 <div class="logo inline">
-                    <div class="inline">LOGO</div>
+                    {% if LOGO %}
+                    <div class="inline">{{LOGO}}</div>
+                    {% endif %}
                 </div>
                 <div class="title inline">
-                    <div class="inline page_name">COLLECTION</div>
+                    {% if HEADER %}
+                    <div class="inline page_name">{{HEADER}}</div>
+                    {% endif %}
                     <div class="page_no">
-                        <p>PAGE 2/2</p>
+                        {% if CURRENT_PAGE and NUMBER_PAGES %}
+                        <p>PAGE {{CURRENT_PAGE}}/{{NUMBER_PAGES}}</p>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="company_info">
-                    <div class="inline">&#60;company_name></div>
-                    <div class="inline info">&#60;organisation_number></div>
-                    <div class="inline info">&#60;vat_number></div>
-                    <div class="inline info">Godkänd för F-skatt</div>
+                    {% if COMPANY_NAME %}
+                    <div class="inline">{{ company_name }}</div>
+                    {% endif %}
+                    {% if organisation_number %}
+                    <div class="inline info">{{ organisation_number }}</div>
+                    {% endif %}
+                    {% if vat_number %}
+                    <div class="inline info">{{ vat_number }}</div>
+                    {% endif %}
+                    <div class="inline info">{{ f_skatt }}</div>
                 </div>
             </div>
+            {% endif %}
 
             <!-----------------------PAYMENT----------------->
+            {% if bankigro_number or plusgiro_number or swish_number or iban_number or swift_number or account_number or clearing_number or bank %}
             <div class="payment_section inline_block">
                 <div class="payment_title" style="font-weight: bold;">
                     <div><b>PAYMENT INFO</b></div>
                 </div>
                 <div class="payment_method">
-                    <div>Bankgiro-number: 12345678</div>
-                    <div>Plusgiro-number: 845747383</div>
-                    <div>Swish-number: 1234562355</div>
+                    {% if bankigro_number %}
+                    <div>Bankgiro-number: {{ bankigro_number }}</div>
+                    {% endif %}
+                    {% if plusgiro_number %}
+                    <div>Plusgiro-number: {{ plusgiro_number }}</div>
+                    {% endif %}
+                    {% if swish_number %}
+                    <div>Swish-number: {{ swish_number }}</div>
+                    {% endif %}
                 </div>
                 <div class="iban">
-                    <div>IBAN-number: JO71CB JO0000 000000 001234 567890</div>
-                    <div>Swift-number: BNOR PH MMXXX</div>
-                    <div>Bank: SEB</div>
+                    {% if iban_number %}
+                    <div>IBAN-number: {{ iban_number }}</div>
+                    {% endif %}
+                    {% if swift_number %}
+                    <div>Swift-number: {{ swift_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
                 <div class="bank_transfer">
-                    <div>Account number: DE89370400440532013000</div>
-                    <div>Clearing number: DEBLZ12345678</div>
-                    <div>Bank: SEB</div>
+                    {% if account_number %}
+                    <div>Account number: {{ account_number }}</div>
+                    {% endif %}
+                    {% if clearing_number %}
+                    <div>Clearing number: {{ clearing_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
             </div>
+            {% endif %}
 
             <!-----------------------DETAILS----------------->
             <div class="details">
-                <div class="details_title">DETAILS</div>
+                <div class="details_title">{{INKASSO_DETAILS_HEADER}}</div>
                 <div class="first-p">
-                    Räntor och avgifter:</br>
-                    En påminnelseavgift på 60 kr samt en avgift för inkassokrav på 180 kr har påförts fakturan. Det har även påförts en dröjsmålsränta baserad på referensränta + 8% i årsränta enligt räntelagens 6 paragraf. Dröjsmålsräntan är beräknad från förfallodatum till datum för inkassokravet. Om inte betalning inkommer innan förfallodatum för detta inkassokrav kan ytterligare ränta och avgifter tillkomma.
-                </div>
-                <div class="second-p">
-                    
-                    Behandling av personuppgifter:</br>
-                    Fortnox Finans är personuppgiftsbiträde för behandlingen av dina personuppgifter i syfte att utföra vårt uppdrag att hantera inkassokrav. Vi kan även komma att behandla dina personuppgifter för egna ändamål i rollen som personuppgiftsansvarig, vilket du kan läsa om i vår integritetspolicy som du hittar på fortnox.se
+                   {{INKASSO_DETAILS_TEXT}}
                 </div>
             </div>
         </div>
-        <!-----------------------FOOTER------------------>
+         <!-----------------------FOOTER------------------>
+        {% if bankigro_number or plusgiro_number or swish_number
+        or iban_number or swift_number or bank or account_number or clearing_number or
+        company_phone or company_email or company_address
+        or footer_key_1 or footer_value_1 or footer_key_2 or footer_value_2 %}
         <div class="footer">
             <div class="payment inline_block">
                 <div class="payment_title" style="font-weight: bold;">
                     <div><b>PAYMENT INFO</b></div>
                 </div>
                 <div class="payment_method">
-                    <div>Bankgiro-number: 12345678</div>
-                    <div>Plusgiro-number: 845747383</div>
-                    <div>Swish-number: 1234562355</div>
+                    {% if bankigro_number %}
+                    <div>Bankgiro-number: {{ bankigro_number }}</div>
+                    {% endif %}
+                    {% if plusgiro_number %}
+                    <div>Plusgiro-number: {{ plusgiro_number }}</div>
+                    {% endif %}
+                    {% if swish_number %}
+                    <div>Swish-number: {{ swish_number }}</div>
+                    {% endif %}
                 </div>
                 <div class="iban">
-                    <div>IBAN-number: JO71CB JO0000 000000 001234 567890</div>
-                    <div>Swift-number: BNOR PH MMXXX</div>
-                    <div>Bank: SEB</div>
+                    {% if iban_number %}
+                    <div>IBAN-number: {{ iban_number }}</div>
+                    {% endif %}
+                    {% if swift_number %}
+                    <div>Swift-number: {{ swift_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
                 <div class="bank_transfer">
-                    <div>Account number: DE89370400440532013000</div>
-                    <div>Clearing number: DEBLZ12345678</div>
-                    <div>Bank: SEB</div>
+                    {% if account_number %}
+                    <div>Account number: {{ account_number }}</div>
+                    {% endif %}
+                    {% if clearing_number %}
+                    <div>Clearing number: {{ clearing_number }}</div>
+                    {% endif %}
+                    {% if bank %}
+                    <div>Bank: {{ bank }}</div>
+                    {% endif %}
                 </div>
             </div>
             <div class="contacts inline_block">
-                <div class="phone"><i class="fa-solid fa-phone"></i>+123-456-7890</div>
-                <div class="mail"><i class="fa-regular fa-envelope"></i>shello@reallygreatsite.com</div>
-                <div class="location"><i class="fa-solid fa-house"></i>123 Anywhere St., Any City, ST 12345</div>
+                {% if company_phone %}
+                <div class="phone"><i class="fa-solid fa-phone"></i>{{ company_phone }}</div>
+                {% endif %}
+                {% if company_email %}
+                <div class="mail"><i class="fa-regular fa-envelope"></i>{{ company_email }}</div>
+                {% endif %}
+                {% if company_address %}
+                <div class="location"><i class="fa-solid fa-house"></i>{{ company_address }}</div>
+                {% endif %}
             </div>
             <div class="footer_key" style="position: relative;">
-                <div class="inline key_1">&#60;footer_key_1> &#60;footer_key_1> </div>
-                <div class="inline key_2">&#60;footer_key_2> &#60;footer_key_2></div>
+                {% if footer_key_1 and footer_value_1 %}
+                <div class="inline key_1">{{ footer_key_1 }} {{ footer_value_1 }} </div>
+                {% endif %}
+                {% if footer_key_2 and footer_value_2 %}
+                <div class="inline key_2">{{ footer_key_2 }} {{ footer_value_2 }}</div>
+                {% endif %}
             </div>
         </div>
+        {% endif %}
     </div>
+    {% endif %}
 
 </body>
 </html>

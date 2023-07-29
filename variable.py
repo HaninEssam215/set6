@@ -3,16 +3,16 @@ import pdfkit
 
 # Your data (variables)
 data = {
-    "LOGO": "HANIN",
-    "current_page": 1,
-    "number_pages": 5,
-    "REMINDER_TEXT": 'Hello Hanin',
+    # "LOGO": "HANIN",
+    # "current_page": 1,
+    # "number_pages": 5,
+    # "REMINDER_TEXT": 'Hello Hanin',
     "invoice_number": 20,
     # Add more variables here...
 }
 
 # Read the HTML template from file
-with open("reminder.html") as file:
+with open("collection.html") as file:
     template_content = file.read()
 
 # Create a Jinja2 template object
@@ -34,7 +34,5 @@ options = {
     'enable-local-file-access': True,
     'quiet': ''
 }
-# Specify the path to wkhtmltopdf executable
-path_to_wkhtmltopdf = r'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'
-config = pdfkit.configuration(wkhtmltopdf=path_to_wkhtmltopdf)
-pdfkit.from_string(rendered_html, 'reminder_output_var.pdf', options=options, configuration=config)
+
+pdfkit.from_string(rendered_html, 'collection_output_var.pdf', options=options)
